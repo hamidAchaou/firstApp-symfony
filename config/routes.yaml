@@ -1,0 +1,19 @@
+# config/routes.yaml
+app_home:
+  path: /
+  controller: App\Controller\HomeController::home
+
+# app_about:
+#   path: /about
+#   controller: App\Controller\HomeController::about
+
+# app_recipes_index:
+#   path: /recipe
+#   controller: App\Controller\RecipeController::index
+
+# recipe_show:
+#   path: /recipe/{slug}-{id}
+#   controller: App\Controller\RecipeController::show
+#   requirements:
+#     id: '\d+'
+#     slug: "[a-z0-9-]+"

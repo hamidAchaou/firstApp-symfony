@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home Page Recipe
+{% endblock %}
+
+{% block body %}
+	<!-- Hero Section -->
+	<section class="hero">
+		<h1 class="display-4">Discover Delicious Recipes</h1>
+		<p class="lead">Explore a world of flavors with our curated recipes</p>
+		<a href="{{ path('app_recipes_index') }}" class="btn btn-primary">Get Started</a>
+	</section>
+
+	<!-- Recipe Cards Section -->
+	<section class="recipe-cards py-5">
+		<div class="container">
+			<div class="row g-4">
+				{% for recipe in recipes %}
+					<div class="col-md-4">
+						<div
+							class="card shadow-sm">
+							{# Check if the recipe has an image field. If not, display a default image (me.png) #}
+							{# <img src="{{ asset('uploads/recipes/' ~ (recipe.image is not empty ? recipe.image : 'images/me.png')) }}" class="card-img-top" alt="{{ recipe.title }}"> #}
+
+							<div class="card-body">
+								<h5 class="card-title">{{ recipe.title }}</h5>
+								<p class="card-text">{{ recipe.content|slice(0, 100) }}...</p>
+								{# <a href="{{ path('app_recipe_show', {'id': recipe.id}) }}" class="btn btn-primary">View Recipe</a> #}
+							</div>
+						</div>
+					</div>
+
+				{% else %}
+					<div class="col-12">
+						<div class="alert alert-warning" role="alert">
+							No recipes found.
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% endblock %}

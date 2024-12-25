@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title" aria-label="Get in Touch">Get in Touch</h1>
+      <p class="hero-text" aria-label="Reach out to us for any inquiries or feedback.">We’d love to hear from you! Whether you have a question or feedback, we're here to help.</p>
+    </div>
+  </section>
+
+  <!-- Contact Form Section -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-row">
+        <!-- Contact Form -->
+        <div class="contact-form">
+          <h2 class="section-title">Contact Us</h2>
+          <form method="post" action="{{ path('app_contact') }}" aria-labelledby="contact-form">
+            <div class="mb-3">
+              <label for="name" class="form-label">Name</label>
+              <input type="text" id="name" name="name" class="form-control" required aria-required="true">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" id="email" name="email" class="form-control" required aria-required="true">
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea id="message" name="message" class="form-control" rows="4" required aria-required="true"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" aria-label="Send Message">Send</button>
+          </form>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-container">
+          <h2 class="section-title">Our Location in Tanger</h2>
+          <iframe src="https://www.google.com/maps/embed/v1/place?q=Tanger&key=YOUR_GOOGLE_MAPS_API_KEY" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" aria-label="Google Map of Tanger"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

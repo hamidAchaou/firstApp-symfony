@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="recipes-section">
+    <div class="container">
+        <h1 class="section-title">Our Recipes</h1>
+
+        <!-- Button with Icon -->
+        <div class="create-recipe-button mb-4 d-flex justify-content-end">
+            <a href="{{ path('recipe_create') }}" class="btn btn-success d-flex align-items-center">
+                <i class="fas fa-plus me-2"></i> Create Recipe
+            </a>
+        </div>
+
+        <div class="recipe-list">
+            {% for recipe in recipes %}
+            <div class="recipe-card">
+                <a href="{{ path('recipe_show', {'slug': recipe.slug, 'id': recipe.id}) }}" class="recipe-link">
+                    <div class="recipe-image">
+                        {# Optionally add an image here if needed #}
+                    </div>
+                    <h2 class="recipe-title">{{ recipe.title }}</h2>
+                    <p class="recipe-description">{{ recipe.content | slice(0, 100) }}...</p>
+                </a>
+                <!-- Actions with Icons -->
+                <div class="recipe-actions d-flex justify-content-center gap-2">
+                    <a href="{{ path('recipe_show', {'slug': recipe.slug, 'id': recipe.id}) }}" class="btn btn-info d-flex align-items-center">
+                        <i class="fas fa-eye me-1"></i> Show
+                    </a>
+                    <a href="{{ path('recipe_edit', {'id': recipe.id}) }}" class="btn btn-secondary d-flex align-items-center">
+                        <i class="fas fa-edit me-1"></i> Edit
+                    </a>
+                    <!-- Icon-Only Button -->
+                    <a href="" class="btn btn-danger btn-icon d-flex justify-content-center align-items-center" title="Delete Recipe">
+                        <i class="fas fa-trash"></i>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

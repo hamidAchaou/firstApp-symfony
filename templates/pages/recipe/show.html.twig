@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<style>
+		.recipe-detail {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-items: center;
+			margin-top: 20px;
+		}
+
+		.recipe-header {
+			text-align: center;
+		}
+
+		.recipe-image {
+			width: 100%;
+			max-width: 600px; /* Maximum width to prevent image from becoming too large */
+			height: auto; /* Maintain aspect ratio */
+			border-radius: 8px;
+		}
+
+		.recipe-content {
+			padding-right: 20px; /* Add some space to the right of the content */
+		}
+
+		.recipe-title {
+			font-size: 2rem;
+			color: var(--text-dark);
+			margin-bottom: 20px;
+		}
+
+		.ingredients-list {
+			list-style-type: none;
+			padding: 0;
+		}
+
+		.ingredients-list li {
+			font-size: 1.2rem;
+		}
+
+		.instructions {
+			margin-top: 20px;
+		}
+
+		.recipe-actions {
+			margin-top: 20px;
+		}
+
+		.btn {
+			display: inline-block;
+			padding: 10px 20px;
+			font-size: 1rem;
+			border-radius: 5px;
+			color: var(--text-light);
+			background-color: var(--primary);
+			text-decoration: none;
+			transition: background-color 0.3s ease;
+		}
+
+		.btn:hover {
+			background-color: var(--accent);
+		}
+	</style>
+	<section class="recipe-detail-section">
+		<div class="container">
+			<div
+				class="recipe-detail row">
+				<!-- Recipe Header with Title and Image -->
+				<div class="recipe-header col-md-6">
+					<h1 class="recipe-title">{{ recipe.title }}</h1>
+					{# Specify width and height for the image with responsive design in mind #}
+					{# <img src="{{ asset('images/me.png') }}" alt="{{ recipe.title }}" class="recipe-image" width="600" height="400"> #}
+				</div>
+
+				<!-- Recipe Content with Ingredients and Instructions -->
+				<div class="recipe-content col-md-6">
+					<div class="ingredients">
+						<h2>Ingredients</h2>
+						<ul class="ingredients-list">
+							{% if ingredients %}
+								<li>{{ ingredients }}</li>
+							{% else %}
+								<li>No ingredients available.</li>
+							{% endif %}
+						</ul>
+					</div>
+
+					<div class="instructions">
+						<h2>Instructions</h2>
+						<p>{{ instructions }}</p>
+					</div>
+				</div>
+
+				<!-- Recipe Actions (e.g., Edit Recipe) -->
+				<div class="recipe-actions">
+					<a href="{{ path('recipe_edit', {'id': recipe.id}) }}" class="btn btn-primary">Edit Recipe</a>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock %}
