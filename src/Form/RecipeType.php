@@ -18,18 +18,21 @@ class RecipeType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Title',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Enter the recipe title',
                 ],
             ])
             ->add('slug', TextType::class, [
                 'label' => 'Slug',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Enter a unique slug (e.g., my-recipe)',
                 ],
             ])
             ->add('content', TextareaType::class, [
                 'label' => 'Content',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Enter the recipe content',
                     'rows' => 5,
@@ -37,14 +40,9 @@ class RecipeType extends AbstractType
             ])
             ->add('duration', IntegerType::class, [
                 'label' => 'Duration (minutes)',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Enter the cooking time in minutes',
-                ],
-            ])
-            ->add('save', SubmitType::class, [
-                'label' => 'Save Recipe',
-                'attr' => [
-                    'class' => 'btn btn-success',
                 ],
             ]);
     }

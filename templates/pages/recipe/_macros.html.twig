@@ -1,0 +1,9 @@
+{% macro renderErrors(errors) %}
+  {% if errors|length > 0 %}
+    <div class="form-errors">
+      {% for error in errors %}
+        <p style="color: red;">{{ error.message }}</p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endmacro %}

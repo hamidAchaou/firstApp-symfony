@@ -1,58 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-	<section class="edit-recipe-section">
-		<div class="container">
-			<h1 class="section-title">Edit Recipe</h1>
-
-			<div class="card">
-				{{ form_start(form) }}
-
-				<div class="form-group">
-					{{ form_label(form.title) }}
-					{{ form_widget(form.title) }}
-				</div>
-
-				<div class="form-group">
-					{{ form_label(form.slug) }}
-					{{ form_widget(form.slug) }}
-				</div>
-
-				<div class="form-group">
-					{{ form_label(form.content) }}
-					{{ form_widget(form.content) }}
-				</div>
-
-				<div class="form-group">
-					{{ form_label(form.duration) }}
-					{{ form_widget(form.duration) }}
-				</div>
-
-				<div class="form-actions d-flex justify-content-end">
-					<a href="{{ path('app_recipes_index') }}" class="btn btn-secondary">Cancel</a>
-					<button type="submit" class="btn btn-success">Save Recipe</button>
-				</div>
-
-				{{ form_end(form) }}
-			</div>
-		</div>
-	</section>
-{% endblock %}
-
-
-{# {% extends 'base.html.twig' %}
-
 {% block title %}
     Edit: {{ recipe.title }}
 {% endblock %}
 
 {% block body %}
+<section class="edit-recipe-section">
     <div class="container">
-        <h1 class="text-center">{{ recipe.title }}</h1>
-        <div class="d-flex justify-content-center">
-            <div class="card p-4 my-3 w-50">
-                {{ form(form) }}
+        <h1 class="section-title">Edit Recipe</h1>
+
+        <div class="card">
+            {{ form_start(form) }}
+
+            <div class="form-group">
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+                {% if form.title.vars.errors|length > 0 %}
+                    <div class="form-errors text-danger">
+                        {% for error in form.title.vars.errors %}
+                            <p class="error-message">{{ error.message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
             </div>
+
+            <div class="form-group">
+                {{ form_label(form.slug) }}
+                {{ form_widget(form.slug) }}
+                {% if form.slug.vars.errors|length > 0 %}
+                    <div class="form-errors text-danger">
+                        {% for error in form.slug.vars.errors %}
+                            <p class="error-message">{{ error.message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.content) }}
+                {{ form_widget(form.content) }}
+                {% if form.content.vars.errors|length > 0 %}
+                    <div class="form-errors text-danger">
+                        {% for error in form.content.vars.errors %}
+                            <p class="error-message">{{ error.message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-group">
+                {{ form_label(form.duration) }}
+                {{ form_widget(form.duration) }}
+                {% if form.duration.vars.errors|length > 0 %}
+                    <div class="form-errors text-danger">
+                        {% for error in form.duration.vars.errors %}
+                            <p class="error-message">{{ error.message }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="form-actions d-flex justify-content-end">
+                <a href="{{ path('app_recipes_index') }}" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-success">Save Recipe</button>
+            </div>
+
+            {{ form_end(form) }}
         </div>
     </div>
-{% endblock %} #}
+</section>
+{% endblock %}
